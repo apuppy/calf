@@ -19,7 +19,8 @@ public class IndexController {
 
     @RequestMapping(value = "/data",method = RequestMethod.GET)
     public void data(){
-        collectionDemo.ArrayList();
+        // collectionDemo.ArrayList();
+        collectionDemo.LinkedList();
     }
 
 }

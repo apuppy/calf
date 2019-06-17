@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -61,6 +62,51 @@ public class CollectionDemo {
         strList.clear();
 
         System.out.println("finally strList capacity:" + strList.size());
+    }
+
+    public void LinkedList(){
+        List<String> linkedList = new LinkedList<>();
+        System.out.println("LinkedList initial capacity : "+linkedList.size());
+
+        // add element
+        linkedList.add("My");
+        linkedList.add("name");
+        linkedList.add("is");
+        linkedList.add("kevin");
+        System.out.println("LinkedList current capacity : "+linkedList.size());
+
+        // modify element
+        linkedList.set(0,"my");
+        linkedList.set(1,"nickname");
+        System.out.println("LinkedList current content : "+linkedList.toString());
+
+        // get element
+        String element = linkedList.get(0);
+        System.out.println("the first element : "+element);
+
+        // iterator
+        Iterator<String> iterator = linkedList.iterator();
+        while(iterator.hasNext()){
+            String next = iterator.next();
+            System.out.println(next);
+        }
+
+        // for
+        for(String str : linkedList){
+            System.out.println(str);
+        }
+
+        // isEmpty & contains
+        boolean isEmpty = linkedList.isEmpty();
+        boolean isContains = linkedList.contains("kevin");
+        System.out.println(isEmpty);
+        System.out.println(isContains);
+
+        // remove element
+        linkedList.remove(0);
+        linkedList.remove("is");
+        linkedList.clear();
+        System.out.println("finally linkedList capacity : "+linkedList.size());
     }
 
 }
