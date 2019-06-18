@@ -2,10 +2,7 @@ package com.demo.calf.data;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class CollectionDemo {
@@ -107,6 +104,123 @@ public class CollectionDemo {
         linkedList.remove("is");
         linkedList.clear();
         System.out.println("finally linkedList capacity : "+linkedList.size());
+    }
+
+    public String HashSet(){
+        Set<String> daysOfWeek = new HashSet<>();
+
+        // add element
+        daysOfWeek.add("Monday");
+        daysOfWeek.add("Tuesday");
+        daysOfWeek.add("Wednesday");
+        daysOfWeek.add("Thursday");
+        daysOfWeek.add("Friday");
+        daysOfWeek.add("Saturday");
+        daysOfWeek.add("Sunday");
+
+        System.out.println(daysOfWeek);
+
+        // HashSet from another collection
+        List<Integer> numbersDivisibleBy5 = new ArrayList<>();
+        numbersDivisibleBy5.add(5);
+        numbersDivisibleBy5.add(10);
+        numbersDivisibleBy5.add(15);
+        numbersDivisibleBy5.add(20);
+        numbersDivisibleBy5.add(25);
+
+        List<Integer> numbersDivisibleBy3 = new ArrayList<>();
+        numbersDivisibleBy3.add(3);
+        numbersDivisibleBy3.add(6);
+        numbersDivisibleBy3.add(9);
+        numbersDivisibleBy3.add(12);
+        numbersDivisibleBy3.add(15);
+
+        Set<Integer> numbersDivisibleBy5Or3 = new HashSet<>(numbersDivisibleBy5);
+        numbersDivisibleBy5Or3.addAll(numbersDivisibleBy3);
+
+        System.out.println(numbersDivisibleBy5Or3);
+
+        // HashSet operations
+        Set<String> popularCities = new HashSet<>();
+        System.out.println("Is popularCities set empty ? " + popularCities.isEmpty());
+
+        popularCities.add("London");
+        popularCities.add("New York");
+        popularCities.add("Paris");
+        popularCities.add("Dubai");
+        // get the size of a HashSet
+        System.out.println("Number of cities in the HashSet : " + popularCities.size());
+
+        // Check if the HashSet contains an element
+        String cityName = "Paris";
+        if(popularCities.contains(cityName)){
+            System.out.println(cityName + " is in the popular cities set.");
+        } else {
+            System.out.println(cityName + " is not in the popular cities set.");
+        }
+
+        // remove element
+        Set<Integer> numbers = new HashSet<>();
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(6);
+        numbers.add(7);
+        numbers.add(8);
+        numbers.add(9);
+        numbers.add(10);
+
+        System.out.println("numbers : " + numbers);
+        // Remove an element
+        boolean isRemoved = numbers.remove(10);
+        System.out.println("After remove(10) => " + numbers);
+        // Remove all elements belonging to an given collection from a HashSet
+        List<Integer> removeList = new ArrayList<>();
+        removeList.add(4);
+        removeList.add(9);
+        numbers.removeAll(removeList);
+        System.out.println("After remove(removeList) : " + numbers);
+        //Remove all elements matching a given predicate
+        numbers.removeIf(num -> num % 2 == 0);
+        System.out.println("After removeIf() => " + numbers);
+        //Remove all elements from HashSet (clear it completely)
+        numbers.clear();
+        System.out.println("After clear() => " + numbers);
+
+        // iterating over a HashSet
+        Set<String> programmingLanguages = new HashSet<>();
+        programmingLanguages.add("C");
+        programmingLanguages.add("C++");
+        programmingLanguages.add("Java");
+        programmingLanguages.add("Python");
+        programmingLanguages.add("PHP");
+        programmingLanguages.add("Ruby");
+        // java8 foreach and lambda
+        System.out.println("=== Iterate over a HashSet using Java 8 forEach and lambda ===");
+        programmingLanguages.forEach(programmingLanguage -> {
+            System.out.println(programmingLanguage);
+        });
+        // iterator
+        System.out.println("=== Iterator over a HashSet using iterator() ===");
+        Iterator<String> programmingLanguageIterator = programmingLanguages.iterator();
+        while(programmingLanguageIterator.hasNext()){
+            String programmingLanguage = programmingLanguageIterator.next();
+            System.out.println(programmingLanguage);
+        }
+        // iterator and java 8 forEachRemaining
+        System.out.println("=== Iterator over a HashSet using iterator() and java 8 forEachRemaining() method ===");
+        programmingLanguageIterator = programmingLanguages.iterator();
+        programmingLanguageIterator.forEachRemaining(programmingLanguage -> {
+            System.out.println(programmingLanguage);
+        });
+        // for
+        System.out.println("=== Iterator over a HashSet using simple for-each loop ===");
+        for(String programmingLanguage : programmingLanguages){
+            System.out.println(programmingLanguage);
+        }
+
+        return "";
     }
 
 }

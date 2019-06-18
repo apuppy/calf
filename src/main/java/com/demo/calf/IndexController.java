@@ -20,7 +20,8 @@ public class IndexController {
     @RequestMapping(value = "/data",method = RequestMethod.GET)
     public void data(){
         // collectionDemo.ArrayList();
-        collectionDemo.LinkedList();
+        // collectionDemo.LinkedList();
+        collectionDemo.HashSet();
     }
 
 }
