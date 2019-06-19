@@ -21,7 +21,8 @@ public class IndexController {
     public void data(){
         // collectionDemo.ArrayList();
         // collectionDemo.LinkedList();
-        collectionDemo.HashSet();
+        // collectionDemo.HashSet();
+        collectionDemo.TreeSet();
     }
 
 }

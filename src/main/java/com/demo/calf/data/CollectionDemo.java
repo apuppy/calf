@@ -8,9 +8,6 @@ import java.util.*;
 public class CollectionDemo {
 
     public void ArrayList(){
-
-        /****** ArrayList ******/
-
         //create ArrayList
         List<String> strList = new ArrayList<>();
 
@@ -219,6 +216,100 @@ public class CollectionDemo {
         for(String programmingLanguage : programmingLanguages){
             System.out.println(programmingLanguage);
         }
+
+        return "";
+    }
+
+    public String TreeSet(){
+        SortedSet<String> fruits = new TreeSet<>();
+        fruits.add("Banana");
+        fruits.add("Apple");
+        fruits.add("Pineapple");
+        fruits.add("Orange");
+        System.out.println("Fruits set :" + fruits);
+
+        // Duplicate element are ignored
+        fruits.add("Apple");
+        System.out.println("After add duplicate element \"Apple\" : " + fruits);
+
+        // This will be allowed because it's in lowercase
+        fruits.add("banana");
+        System.out.println("After adding \"banana\" : " + fruits);
+
+        // Creating a TreeSet with a custom Comparator (Case Insensitive Order)
+        // SortedSet<String> newFruits = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+        // The above TreeSet with the custom Comparator is the consise form of the following:
+        SortedSet<String> newFruits = new TreeSet<>(new Comparator<String>() {
+            @Override
+            public int compare(String s1,String s2){
+                return s1.compareToIgnoreCase(s2);
+            }
+        });
+
+        // Adding new elements to TreeSet
+        newFruits.add("Banana");
+        newFruits.add("Apple");
+        newFruits.add("Pineapple");
+        newFruits.add("Orange");
+        System.out.println("Fruits set : " + newFruits);
+
+        // Now, lowercase elements will alse be considered as duplicates
+        newFruits.add("banana");
+        System.out.println("After adding \"banana\" : " + newFruits);
+
+        TreeSet<String> students = new TreeSet<>();
+        students.add("Julia");
+        students.add("Robert");
+        students.add("Mark");
+        students.add("Steven");
+        System.out.println("Students TreeSet : " + students);
+
+        // Finding the size of a TreeSet
+        System.out.println("Number of elements in the TreeSet : " + students.size());
+
+        // Checking if an element exists in the TreeSet
+        String name = "Julia";
+        if(students.contains(name)) {
+            System.out.println("TreeSet contains the element : " + name);
+        } else {
+            System.out.println("TreeSet does not contain the element : " + name);
+        }
+
+        // Navigating through the TreeSet
+        System.out.println("First element : " + students.first());
+        System.out.println("Last element : " + students.last());
+        name = "Robert";
+        System.out.println("Element just greater than " + name + " : " + students.higher(name));
+        System.out.println("Element just lower than " + name + " : " + students.lower(name));
+
+        TreeSet<Integer> numbers = new TreeSet<>();
+        numbers.add(10);
+        numbers.add(15);
+        numbers.add(20);
+        numbers.add(25);
+        numbers.add(30);
+        numbers.add(42);
+        numbers.add(49);
+        numbers.add(50);
+        System.out.println("Numbers TreeSet : " + numbers);
+
+        // Remove an element from the TreeSet
+        boolean isRemoved = numbers.remove(49);
+        if(isRemoved) {
+            System.out.println("After removing 49 : " + numbers);
+        }
+
+        // Remove all elements divisible by 3
+        numbers.removeIf(number -> number % 3 == 0);
+        System.out.println("After removeIf() => " + numbers);
+
+        // Retrieve and remove the first element from the TreeSet
+        Integer num = numbers.pollFirst();
+        System.out.println("Removed first element " + num + " from the TreeSet : " + numbers);
+
+        // Retrieve and remove the last element from the TreeSet
+        num = numbers.pollLast();
+        System.out.println("Removed last element "+ num + " from the TreeSet : " + numbers);
 
         return "";
     }
