@@ -314,4 +314,93 @@ public class CollectionDemo {
         return "";
     }
 
+    public String Queue(){
+        // Create and initialize a Queue using a LinkedList
+        Queue<String> waitingQueue = new LinkedList<>();
+
+        // Adding elements to the Queue
+        waitingQueue.add("Rajeev");
+        waitingQueue.add("Chris");
+        waitingQueue.add("John");
+        waitingQueue.add("Mark");
+        waitingQueue.add("Steven");
+        System.out.println("WaitingQueue : " + waitingQueue);
+
+        // Removing an element from the Queue using remove() (The Dequeue operation)
+        // The remove() method throws NoSuchElementException if the Queue is empty
+        String name = waitingQueue.remove();
+        System.out.println("Removed from waitingQueue : " + name + " | new waitingQueue : " + waitingQueue);
+
+        // Removing an element from the Queue using poll()
+        // The poll() method is similar to remove() except that it returns null if Queue is empty
+        name = waitingQueue.poll();
+        System.out.println("Removed from waitingQueue : " + name + " | new waitingQueue : " + waitingQueue);
+
+        Queue<String> newWaitingQueue = new LinkedList<>();
+        newWaitingQueue.add("Jennifer");
+        newWaitingQueue.add("Angelina");
+        newWaitingQueue.add("Johnny");
+        newWaitingQueue.add("Sachin");
+        System.out.println("newWaitingQueue : " + newWaitingQueue);
+
+        // Check is a Queue is empty
+        System.out.println("Is neWaitingQueue empty? : " + newWaitingQueue.isEmpty());
+
+        // Find the size of the Queue
+        System.out.println("Size of newWaitingQueue : " + newWaitingQueue.size());
+
+        // Check if the Queue contains an element
+        String newName = "Johnny";
+        if(newWaitingQueue.contains(newName)) {
+            System.out.println("newWaitingQueue contains " + newName);
+        } else {
+            System.out.println("newWaitingQueue doesn't contain " + newName);
+        }
+
+        // Get the element at the front of the Queue without removing it using element()
+        // The element() method throws NoSuchElementException if the Queue is empty
+        String firstPersonInTheNewWaitingQueue = newWaitingQueue.element();
+        System.out.println("First element in the waiting Queue(element()) : " + firstPersonInTheNewWaitingQueue);
+
+        // Get the element at the front of the Queue without removing it using peek()
+        // The peek() method is similar to element() except that it returns null if the Queue is empty
+        firstPersonInTheNewWaitingQueue = newWaitingQueue.peek();
+        System.out.println("Frist element in the waiting Queue(peek()) : " + firstPersonInTheNewWaitingQueue);
+
+        Queue<String> companies = new LinkedList<>();
+        companies.add("Microsoft");
+        companies.add("Google");
+        companies.add("Amazon");
+        companies.add("Apple");
+        companies.add("Huawei");
+        companies.add("Tencent");
+        companies.add("Alibaba");
+        companies.add("Facebook");
+
+        System.out.println("=== Iterating over a Queue using Java 8 forEach() ===");
+        companies.forEach(company -> {
+            System.out.println(company);
+        });
+
+        System.out.println("\n=== Iterating over a Queue using iterator() ===");
+        Iterator<String> companiesIterator = companies.iterator();
+        while(companiesIterator.hasNext()) {
+            String company = companiesIterator.next();
+            System.out.println(company);
+        }
+
+        System.out.println("\n=== Iterating over a Queue using iterator() and Java 8 forEachRemaining() ===");
+        companiesIterator = companies.iterator();
+        companiesIterator.forEachRemaining(company -> {
+            System.out.println(company);
+        });
+
+        System.out.println("\n=== Iterating over a Queue using simple for-each loop ===");
+        for(String company : companies){
+            System.out.println(company);
+        }
+
+        return "";
+    }
+
 }

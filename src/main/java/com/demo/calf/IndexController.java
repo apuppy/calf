@@ -22,7 +22,8 @@ public class IndexController {
         // collectionDemo.ArrayList();
         // collectionDemo.LinkedList();
         // collectionDemo.HashSet();
-        collectionDemo.TreeSet();
+        // collectionDemo.TreeSet();
+        collectionDemo.Queue();
     }
 
 }
