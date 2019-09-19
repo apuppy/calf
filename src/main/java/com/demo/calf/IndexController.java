@@ -2,6 +2,7 @@ package com.demo.calf;
 
 import com.demo.calf.data.CollectionDemo;
 import com.demo.calf.data.MapDemo;
+import com.demo.calf.service.EncryptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,9 @@ public class IndexController {
     @Autowired
     MapDemo mapDemo;
 
+    @Autowired
+    EncryptService encryptService;
+
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     public String hello(){
         return "hello";
@@ -28,7 +32,8 @@ public class IndexController {
         // collectionDemo.HashSet();
         // collectionDemo.TreeSet();
         // collectionDemo.Queue();
-        mapDemo.Hashtable();
+        // mapDemo.Hashtable();
+        encryptService.testEncryption(); // 测试AES加解密
     }
 
 }
