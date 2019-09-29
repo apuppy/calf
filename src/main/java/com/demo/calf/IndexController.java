@@ -2,6 +2,7 @@ package com.demo.calf;
 
 import com.demo.calf.data.CollectionDemo;
 import com.demo.calf.data.MapDemo;
+import com.demo.calf.service.FileParserService;
 import com.demo.calf.service.EncryptService;
 import com.demo.calf.service.HttpService;
 import com.demo.calf.utils.FileUtil;
@@ -31,6 +32,9 @@ public class IndexController {
     @Autowired
     FileUtil fileUtil;
 
+    @Autowired
+    FileParserService fileParserService;
+
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
@@ -52,10 +56,13 @@ public class IndexController {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public void test() {
         // 获取URL中的请求路径(不包括域名与参数)
+        /*
         String url = "https://www.pexels.com/sponsored_photos/8/small/?photo_id=2208836";
         String URLPath = httpService.getUrlPath(url); // 此例返回:"/sponsored_photos/8/small/"
+        */
 
         // 文件下载
+        /*
         String downloadURL = "https://cdn.segmentfault.com/v-5d5e3c1d/global/img/banner-login/banner-bg.svg";
         String filename = "simple_download_test.svg";
         String filePath = fileUtil.getDownloadFilePath(filename);
@@ -64,6 +71,16 @@ public class IndexController {
         if (StringUtils.isEmpty(fileSavePath)) {
             logger.error("下载出错");
         }
+        */
+
+        // 文档解析,利用tika解析文档，返回文本文件内容
+        String filename = "/home/hongde/code/assets/hello.pptx";
+        boolean supportType = fileParserService.isSupportedFileType(filename); // 文件类型是否支持
+        if(supportType){
+            String fileContent = fileParserService.parse(filename);
+            logger.info("" + fileContent);
+        }
+
     }
 
 }
